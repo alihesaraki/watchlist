@@ -416,8 +416,12 @@ function init() {
   updateCountdowns();
   refreshMarket(true);
   scheduleMarket();
+  // Keep the Tehran clock running independently of market refreshes and tab visibility.
+  updateLast();
+  setInterval(updateLast, 1000);
   setInterval(() => { if (!document.hidden) updateCountdowns(); }, 1000);
   document.addEventListener('visibilitychange', () => {
+    updateLast();
     if (document.hidden) return;
     if (Date.now() - state.lastFull >= MARKET_INTERVAL) refreshMarket(true);
   });
