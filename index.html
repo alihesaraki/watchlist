@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c0e13">
+<title>Binance Signal Scanner</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fapi.binance.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<main class="app-shell">
+  <div class="table-wrap">
+    <table id="scannerTable">
+      <thead>
+        <tr>
+          <th class="copy-col"></th>
+          <th data-sort="flag" class="flag-col">FLAG</th>
+          <th data-sort="symbol">PAIR</th>
+          <th data-sort="price">PRICE</th>
+          <th data-sort="volume">24H VOL</th>
+          <th data-sort="pctDay"><span>DAILY CANDLE</span><small id="cd1d" class="cd"></small></th>
+          <th data-sort="pctWeek"><span>WEEKLY CANDLE</span><small id="cd1w" class="cd"></small></th>
+          <th data-sort="pctMonth"><span>MONTHLY CANDLE</span><small id="cd1M" class="cd"></small></th>
+        </tr>
+      </thead>
+      <tbody id="rows">
+        <tr><td colspan="8" class="loading">Loading Binance USDT perpetuals…</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="status-bar">
+    <span id="statusDot" class="status-dot"></span>
+    <span id="statusText">Connecting to Binance…</span>
+    <span class="status-spacer"></span>
+    <input id="searchInput" class="search-input" type="search" placeholder="Search coin…" autocomplete="off" spellcheck="false">
+    <button id="longBtn" class="filter-btn long" type="button" aria-pressed="false" title="Daily candle +10% or more">LONG</button>
+    <button id="shortBtn" class="filter-btn short" type="button" aria-pressed="false" title="Daily candle -10% or less">SHORT</button>
+    <button id="volBtn" class="filter-btn vol" type="button" aria-pressed="false" title="Minimum 24H volume filter (click to cycle)">VOL</button>
+    <span id="lastUpdate">--</span>
+  </div>
+</main>
+</body>
+</html>
